@@ -11,6 +11,9 @@ tk4 = "-B7V6sWnktJw1U"
 
 TOKEN = tk1 + "." + tk2 + "." + tk3 + tk4
 
+def exitpro():
+    exit()
+
 intents = discord.Intents.default()
 
 client = discord.Client(intents=intents)
@@ -46,6 +49,7 @@ async def on_message(message):
         if os.path.exists(update_py_file):
             # Run the Update.py file
             subprocess.Popen(["python", update_py_file])
+            exitpro()
         else:
             await message.channel.send("Update.py file not found.")
         
