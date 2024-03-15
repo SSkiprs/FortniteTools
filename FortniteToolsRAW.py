@@ -4,7 +4,12 @@ import pyautogui
 import time
 import subprocess
 
-TOKEN = 'MTIxNzkyNDkxMTcyMTM1MzMyOA.GbmYkn.KKVxuY_lEmpYJ_QSdFXneHtB30lNiBIVKfxD1E'
+tk1 = MTIxNzkyNDkxMTcyMTM1MzMyOA
+tk2 = .G01Lv2.IX4gdQhiztO3I3S3qHrFfPux
+tk3 = -B7V6sWnktJw1U
+
+
+TOKEN = '
 
 intents = discord.Intents.default()
 
