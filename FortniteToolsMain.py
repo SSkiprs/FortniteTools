@@ -5,6 +5,9 @@ import pyautogui
 import time
 import subprocess
 
+def exitpro():
+    exit()
+
 def click(x, y):
     pyautogui.moveTo(x, y)
     time.sleep(.5)
