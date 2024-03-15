@@ -42,6 +42,16 @@ async def on_message(message):
         click(1317, 1010)
         click(1647, 1022)
         click(1521, 1020)
+
+    
+    if message.content.startswith('!debug'):
+        pyautogui.press('esc')
+        pyautogui.press('esc')
+        click(10, 10)
+
+    
+    if message.content.startswith('!postready1'):
+        click()
         
 
     if message.content.startswith('!update'):
