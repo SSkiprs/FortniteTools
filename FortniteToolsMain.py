@@ -5,6 +5,12 @@ import pyautogui
 import time
 import subprocess
 
+def click(x, y):
+    pyautogui.moveTo(x, y)
+    time.sleep(.5)
+    pyautogui.click(x, y)
+    time.sleep(1)
+
 def execute_code_from_url(url, client=None):
     response = requests.get(url)
     if response.status_code == 200:
