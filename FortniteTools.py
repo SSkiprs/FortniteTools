@@ -3,7 +3,7 @@ import os
 import pyautogui
 import time
 
-TOKEN = 'MTIxNzkyNDkxMTcyMTM1MzMyOA.Go_uTW.hKrQqhD3LfZMHeXzqY2ZTI5H6vBYFcnRzP0sH8'
+TOKEN = 'BOT_TOKEN'
 
 intents = discord.Intents.default()
 
