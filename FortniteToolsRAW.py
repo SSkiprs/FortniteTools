@@ -37,6 +37,13 @@ async def on_message(message):
         click(1168, 368)
         click(1388, 335)
 
+    if message.content.startswith('!lobby'):
+        pyautogui.press('esc')
+        click(1317, 1010)
+        click(1647, 1022)
+        click(1521, 1020)
+        
+
     if message.content.startswith('!update'):
         current_directory = os.path.dirname(os.path.abspath(__file__))
     
