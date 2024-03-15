@@ -49,7 +49,7 @@ async def on_message(message):
         if os.path.exists(update_py_file):
             # Run the Update.py file
             subprocess.Popen(["python", update_py_file])
-            exitpro()
+            exit()
         else:
             await message.channel.send("Update.py file not found.")
         
