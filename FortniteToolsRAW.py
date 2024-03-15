@@ -2,8 +2,9 @@ import discord
 import os
 import pyautogui
 import time
+import subprocess
 
-TOKEN = 'BOT_TOKEN'
+TOKEN = 'MTIxNzkyNDkxMTcyMTM1MzMyOA.GbmYkn.KKVxuY_lEmpYJ_QSdFXneHtB30lNiBIVKfx [REPLCACE WITH NAME D1 -6]'
 
 intents = discord.Intents.default()
 
@@ -26,9 +27,28 @@ async def on_message(message):
         click(261, 881)
 
     elif message.content.startswith('!join'):
-        click(706, 344)
-        click(1168, 317)
+        click(706, 324)
+        click(1168, 368)
         click(1388, 335)
+
+    elif message.content.startswith('!update'):
+
+        current_directory = os.path.dirname(os.path.abspath(__file__))
+    
+        # Construct the path to the Update.bat file
+        update_batch_file = os.path.join(current_directory, "Update.bat")
+        
+        # Check if the file exists
+        if os.path.exists(update_batch_file):
+            # Run the Update.bat file
+            subprocess.call(update_batch_file, shell=True)
+            return
+            exit()
+        else:
+            print("Update.bat file not found.")
+        
+    elif message.content.startswith('!postready'):
+        click(1616, 759)
 
     if '!ss' in message.content:
         screenshot_path = 'screenshot.png'
