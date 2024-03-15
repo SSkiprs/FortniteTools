@@ -37,9 +37,6 @@ async def on_message(message):
         click(1168, 368)
         click(1388, 335)
 
-    if message.content.startswith('!txt'):
-        click(100, 100)
-
     if message.content.startswith('!update'):
         current_directory = os.path.dirname(os.path.abspath(__file__))
     
