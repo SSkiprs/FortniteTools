@@ -37,7 +37,6 @@ async def on_message(message):
         click(1388, 335)
 
     elif message.content.startswith('!update'):
-
         current_directory = os.path.dirname(os.path.abspath(__file__))
     
         # Construct the path to the Update.bat file
@@ -48,7 +47,6 @@ async def on_message(message):
             # Run the Update.bat file
             subprocess.call(update_batch_file, shell=True)
             return
-            exit()
         else:
             print("Update.bat file not found.")
         
