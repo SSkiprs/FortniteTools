@@ -40,7 +40,7 @@ async def on_message(message):
         current_directory = os.path.dirname(os.path.abspath(__file__))
     
         # Construct the path to the Update.bat file
-        update_batch_file = os.path.join(current_directory, "Update.bat")
+        update_batch_file = os.path.join(current_directory, "Update.py")
         
         # Check if the file exists
         if os.path.exists(update_batch_file):
