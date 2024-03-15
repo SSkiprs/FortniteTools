@@ -11,8 +11,6 @@ tk4 = "-B7V6sWnktJw1U"
 
 TOKEN = tk1 + "." + tk2 + "." + tk3 + tk4
 
-def exitpro():
-    exit()
 
 intents = discord.Intents.default()
 
@@ -24,6 +22,8 @@ def click(x, y):
     time.sleep(.5)
     pyautogui.click(x, y)
     time.sleep(1)
+
+click(0, 0)
 
 # Function to handle messages
 @client.event
