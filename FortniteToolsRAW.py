@@ -23,8 +23,6 @@ def click(x, y):
     pyautogui.click(x, y)
     time.sleep(1)
 
-click(0, 0)
-
 # Function to handle messages
 @client.event
 async def on_message(message):
@@ -65,5 +63,6 @@ async def on_message(message):
 @client.event
 async def on_ready():
     print(f'We have logged in as {client.user}')
+    click(10, 10)
 
 client.run(TOKEN)
