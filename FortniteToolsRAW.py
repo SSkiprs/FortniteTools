@@ -4,6 +4,8 @@ import pyautogui
 import time
 import subprocess
 
+print("GELOLOSDLOADLSALDSODLAOLDSDLSALDALDSALDOSALDSAOKDSAJDSAHDISAIDASID")
+
 tk1 = "MTIxNzkyNDkxMTcyMTM1MzMyOA"
 tk2 = "G01Lv2"
 tk3 = "IX4gdQhiztO3I3S3qHrFfPux"
