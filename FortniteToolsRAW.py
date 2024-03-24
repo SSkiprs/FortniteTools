@@ -14,7 +14,7 @@ TOKEN = f"{tk1}.{tk2}.{tk3}{tk4}"
 # Channel ID to send the message to
 channel_id = 1080579533691953162
 
-Locked = 'false'
+Locked = False  # Initialize as boolean
 
 intents = discord.Intents.default()
 client = discord.Client(intents=intents)
@@ -29,29 +29,33 @@ def click(x, y):
 # Function to handle messages
 @client.event
 async def on_message(message):
+    global Locked  # Declare as global
+
     if message.author == client.user:
-        return            
+        return
 
     if message.content.startswith('!lock'):
         if message.author.id == 858825984340656169:
-            Locked = 'true'
+            Locked = True
             await message.channel.send("Successfully locked!")
 
-    if message.content.startswith('!unclock'):
+    if message.content.startswith('!unlock'):
         if message.author.id == 858825984340656169:
-            Locked = 'false'
+            Locked = False
             await message.channel.send("Successfully unlocked!")
 
     if message.content.startswith('!ready'):
-        if Locked == 'true':
+        if Locked:
             # Locked
+            pass
         else:
             click(261, 881)
             await message.channel.send("Clicked Ready!")
 
     elif message.content.startswith('!join'):
-        if Locked == 'true':
+        if Locked:
             # Locked
+            pass
         else:
             click(706, 324)
             click(1168, 368)
@@ -59,8 +63,9 @@ async def on_message(message):
             await message.channel.send("Clicked Join!")
 
     elif message.content.startswith('!lobby'):
-        if Locked == 'true':
+        if Locked:
             # Locked
+            pass
         else:
             pyautogui.press('esc')
             click(1317, 1010)
@@ -69,8 +74,9 @@ async def on_message(message):
             await message.channel.send("Entered Lobby!")
 
     elif message.content.startswith('!debug'):
-        if Locked == 'true':
+        if Locked:
             # Locked
+            pass
         else:
             pyautogui.press('esc')
             pyautogui.press('esc')
@@ -78,14 +84,16 @@ async def on_message(message):
             await message.channel.send("Entered Debug Mode!")
 
     elif message.content.startswith('!postready1'):
-        if Locked == 'true':
+        if Locked:
             # Locked
+            pass
         else:
             await message.channel.send("This feature is still in development!")
 
     elif message.content.startswith('!update'):
-        if Locked == 'true':
+        if Locked:
             # Locked
+            pass
         else:
             current_directory = os.path.dirname(os.path.abspath(__file__))
             update_py_file = os.path.join(current_directory, "Update.py")
@@ -97,15 +105,17 @@ async def on_message(message):
                 await message.channel.send("Update.py file not found.")
 
     elif message.content.startswith('!postready'):
-        if Locked == 'true':
+        if Locked:
             # Locked
+            pass
         else:
             click(1616, 759)
             await message.channel.send("Clicked Post Ready!")
 
     elif '!ss' in message.content:
-        if Locked == 'true':
+        if Locked:
             # Locked
+            pass
         else:
             screenshot_path = 'screenshot.png'
             pyautogui.screenshot(screenshot_path)
