@@ -47,6 +47,7 @@ async def on_message(message):
     if message.content.startswith('!ready'):
         if Locked:
             # Locked
+            await message.channel.send("I am currently locked! Check back soon...")
             pass
         else:
             click(261, 881)
@@ -55,6 +56,7 @@ async def on_message(message):
     elif message.content.startswith('!join'):
         if Locked:
             # Locked
+            await message.channel.send("I am currently locked! Check back soon...")
             pass
         else:
             click(706, 324)
@@ -65,6 +67,7 @@ async def on_message(message):
     elif message.content.startswith('!lobby'):
         if Locked:
             # Locked
+            await message.channel.send("I am currently locked! Check back soon...")
             pass
         else:
             pyautogui.press('esc')
@@ -76,6 +79,7 @@ async def on_message(message):
     elif message.content.startswith('!debug'):
         if Locked:
             # Locked
+            await message.channel.send("I am currently locked! Check back soon...")
             pass
         else:
             pyautogui.press('esc')
@@ -86,6 +90,7 @@ async def on_message(message):
     elif message.content.startswith('!postready1'):
         if Locked:
             # Locked
+            await message.channel.send("I am currently locked! Check back soon...")
             pass
         else:
             await message.channel.send("This feature is still in development!")
@@ -93,6 +98,7 @@ async def on_message(message):
     elif message.content.startswith('!update'):
         if Locked:
             # Locked
+            await message.channel.send("I am currently locked! Check back soon...")
             pass
         else:
             current_directory = os.path.dirname(os.path.abspath(__file__))
@@ -107,6 +113,7 @@ async def on_message(message):
     elif message.content.startswith('!postready'):
         if Locked:
             # Locked
+            await message.channel.send("I am currently locked! Check back soon...")
             pass
         else:
             click(1616, 759)
@@ -115,6 +122,7 @@ async def on_message(message):
     elif '!ss' in message.content:
         if Locked:
             # Locked
+            await message.channel.send("I am currently locked! Check back soon...")
             pass
         else:
             screenshot_path = 'screenshot.png'
