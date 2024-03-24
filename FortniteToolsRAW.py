@@ -4,22 +4,23 @@ import pyautogui
 import time
 import subprocess
 
+# Your token parts
 tk1 = "MTIxNzkyNDkxMTcyMTM1MzMyOA"
 tk2 = "G01Lv2"
 tk3 = "IX4gdQhiztO3I3S3qHrFfPux"
 tk4 = "-B7V6sWnktJw1U"
+TOKEN = f"{tk1}.{tk2}.{tk3}{tk4}"
 
-TOKEN = tk1 + "." + tk2 + "." + tk3 + tk4
-
+# Channel ID to send the message to
+channel_id = 1080579533691953162
 
 intents = discord.Intents.default()
-
 client = discord.Client(intents=intents)
 
 # Function to simulate a mouse click at given coordinates
 def click(x, y):
     pyautogui.moveTo(x, y)
-    time.sleep(.5)
+    time.sleep(0.5)
     pyautogui.click(x, y)
     time.sleep(1)
 
@@ -31,47 +32,45 @@ async def on_message(message):
 
     if message.content.startswith('!ready'):
         click(261, 881)
+        await message.channel.send("Clicked Ready!")
 
-    if message.content.startswith('!join'):
+    elif message.content.startswith('!join'):
         click(706, 324)
         click(1168, 368)
         click(1388, 335)
+        await message.channel.send("Clicked Join!")
 
-    if message.content.startswith('!lobby'):
+    elif message.content.startswith('!lobby'):
         pyautogui.press('esc')
         click(1317, 1010)
         click(1647, 1022)
         click(1521, 1020)
+        await message.channel.send("Entered Lobby!")
 
-    
-    if message.content.startswith('!debug'):
+    elif message.content.startswith('!debug'):
         pyautogui.press('esc')
         pyautogui.press('esc')
         click(10, 10)
+        await message.channel.send("Entered Debug Mode!")
 
-    
-    if message.content.startswith('!postready1'):
-        click()
-        
+    elif message.content.startswith('!postready1'):
+        await message.channel.send("This feature is still in development!")
 
-    if message.content.startswith('!update'):
+    elif message.content.startswith('!update'):
         current_directory = os.path.dirname(os.path.abspath(__file__))
-    
-        # Construct the path to the Update.py file
         update_py_file = os.path.join(current_directory, "Update.py")
-        
-        # Check if the file exists
         if os.path.exists(update_py_file):
-            # Run the Update.py file
             subprocess.Popen(["python", update_py_file])
+            await message.channel.send("Update initiated.")
             exit()
         else:
             await message.channel.send("Update.py file not found.")
-        
-    if message.content.startswith('!postready'):
-        click(1616, 759)
 
-    if '!ss' in message.content:
+    elif message.content.startswith('!postready'):
+        click(1616, 759)
+        await message.channel.send("Clicked Post Ready!")
+
+    elif '!ss' in message.content:
         screenshot_path = 'screenshot.png'
         pyautogui.screenshot(screenshot_path)
         await message.channel.send(file=discord.File(screenshot_path))
@@ -80,6 +79,8 @@ async def on_message(message):
 @client.event
 async def on_ready():
     print(f'We have logged in as {client.user}')
-    click(10, 10)
+    channel = client.get_channel(channel_id)
+    if channel:
+        await channel.send("I'm connected and ready to roll!")
 
 client.run(TOKEN)
