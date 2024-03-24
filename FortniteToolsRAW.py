@@ -18,6 +18,7 @@ channel_id = 1080579533691953162
 locked_user_id = 858825984340656169
 
 # Initialize lock status to False
+global locked
 locked = False
 
 intents = discord.Intents.default()
@@ -33,7 +34,6 @@ def click(x, y):
 # Function to handle messages
 @client.event
 async def on_message(message):
-    global locked
     
     if message.author == client.user:
         return
