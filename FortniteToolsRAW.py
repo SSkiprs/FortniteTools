@@ -17,9 +17,20 @@ channel_id = 1080579533691953162
 # User ID to lock/unlock commands
 locked_user_id = 858825984340656169
 
-# Initialize lock status to False
-global locked
-locked = False
+class CommandLock:
+    def __init__(self):
+        self.locked = False
+
+    def lock(self):
+        self.locked = True
+
+    def unlock(self):
+        self.locked = False
+
+    def is_locked(self):
+        return self.locked
+
+lock = CommandLock()
 
 intents = discord.Intents.default()
 client = discord.Client(intents=intents)
@@ -34,12 +45,11 @@ def click(x, y):
 # Function to handle messages
 @client.event
 async def on_message(message):
-    
     if message.author == client.user:
         return
-    
+
     # Check if the user is locked
-    if locked and message.author.id != locked_user_id:
+    if lock.is_locked() and message.author.id != locked_user_id:
         await message.channel.send("I am currently locked. Check back soon.")
         return
 
@@ -92,13 +102,11 @@ async def on_message(message):
         os.remove(screenshot_path)
     
     elif message.content.startswith('!lock') and message.author.id == locked_user_id:
-        global locked
-        locked = True
+        lock.lock()
         await message.channel.send("Commands locked!")
 
     elif message.content.startswith('!unlock') and message.author.id == locked_user_id:
-        global locked
-        locked = False
+        lock.unlock()
         await message.channel.send("Commands unlocked!")
 
 @client.event
