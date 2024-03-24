@@ -37,6 +37,11 @@ async def on_message(message):
             Locked = 'true'
             await message.channel.send("Successfully locked!")
 
+    if message.content.startswith('!unclock'):
+        if message.author.id == 858825984340656169:
+            Locked = 'false'
+            await message.channel.send("Successfully unlocked!")
+
     if message.content.startswith('!ready'):
         if Locked == 'true':
             # Locked
