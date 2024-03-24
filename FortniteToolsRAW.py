@@ -14,6 +14,8 @@ TOKEN = f"{tk1}.{tk2}.{tk3}{tk4}"
 # Channel ID to send the message to
 channel_id = 1080579533691953162
 
+Locked = 'false'
+
 intents = discord.Intents.default()
 client = discord.Client(intents=intents)
 
@@ -28,53 +30,82 @@ def click(x, y):
 @client.event
 async def on_message(message):
     if message.author == client.user:
-        return
+        return            
+
+    if message.content.startswith('!lock'):
+        if message.author.id == 858825984340656169:
+            Locked = 'true'
+            await message.channel.send("Successfully locked!")
 
     if message.content.startswith('!ready'):
-        click(261, 881)
-        await message.channel.send("Clicked Ready!")
+        if Locked == 'true':
+            # Locked
+        else:
+            click(261, 881)
+            await message.channel.send("Clicked Ready!")
 
     elif message.content.startswith('!join'):
-        click(706, 324)
-        click(1168, 368)
-        click(1388, 335)
-        await message.channel.send("Clicked Join!")
+        if Locked == 'true':
+            # Locked
+        else:
+            click(706, 324)
+            click(1168, 368)
+            click(1388, 335)
+            await message.channel.send("Clicked Join!")
 
     elif message.content.startswith('!lobby'):
-        pyautogui.press('esc')
-        click(1317, 1010)
-        click(1647, 1022)
-        click(1521, 1020)
-        await message.channel.send("Entered Lobby!")
+        if Locked == 'true':
+            # Locked
+        else:
+            pyautogui.press('esc')
+            click(1317, 1010)
+            click(1647, 1022)
+            click(1521, 1020)
+            await message.channel.send("Entered Lobby!")
 
     elif message.content.startswith('!debug'):
-        pyautogui.press('esc')
-        pyautogui.press('esc')
-        click(10, 10)
-        await message.channel.send("Entered Debug Mode!")
+        if Locked == 'true':
+            # Locked
+        else:
+            pyautogui.press('esc')
+            pyautogui.press('esc')
+            click(10, 10)
+            await message.channel.send("Entered Debug Mode!")
 
     elif message.content.startswith('!postready1'):
-        await message.channel.send("This feature is still in development!")
+        if Locked == 'true':
+            # Locked
+        else:
+            await message.channel.send("This feature is still in development!")
 
     elif message.content.startswith('!update'):
-        current_directory = os.path.dirname(os.path.abspath(__file__))
-        update_py_file = os.path.join(current_directory, "Update.py")
-        if os.path.exists(update_py_file):
-            subprocess.Popen(["python", update_py_file])
-            await message.channel.send("Update initiated.")
-            exit()
+        if Locked == 'true':
+            # Locked
         else:
-            await message.channel.send("Update.py file not found.")
+            current_directory = os.path.dirname(os.path.abspath(__file__))
+            update_py_file = os.path.join(current_directory, "Update.py")
+            if os.path.exists(update_py_file):
+                subprocess.Popen(["python", update_py_file])
+                await message.channel.send("Update initiated.")
+                exit()
+            else:
+                await message.channel.send("Update.py file not found.")
 
     elif message.content.startswith('!postready'):
-        click(1616, 759)
-        await message.channel.send("Clicked Post Ready!")
+        if Locked == 'true':
+            # Locked
+        else:
+            click(1616, 759)
+            await message.channel.send("Clicked Post Ready!")
 
     elif '!ss' in message.content:
-        screenshot_path = 'screenshot.png'
-        pyautogui.screenshot(screenshot_path)
-        await message.channel.send(file=discord.File(screenshot_path))
-        os.remove(screenshot_path)
+        if Locked == 'true':
+            # Locked
+        else:
+            screenshot_path = 'screenshot.png'
+            pyautogui.screenshot(screenshot_path)
+            await message.channel.send(file=discord.File(screenshot_path))
+            os.remove(screenshot_path)
 
 @client.event
 async def on_ready():
