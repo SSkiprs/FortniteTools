@@ -14,6 +14,12 @@ TOKEN = f"{tk1}.{tk2}.{tk3}{tk4}"
 # Channel ID to send the message to
 channel_id = 1080579533691953162
 
+# User ID to lock/unlock commands
+locked_user_id = 858825984340656169
+
+# Initialize lock status to False
+locked = False
+
 intents = discord.Intents.default()
 client = discord.Client(intents=intents)
 
@@ -27,7 +33,14 @@ def click(x, y):
 # Function to handle messages
 @client.event
 async def on_message(message):
+    global locked
+    
     if message.author == client.user:
+        return
+    
+    # Check if the user is locked
+    if locked and message.author.id != locked_user_id:
+        await message.channel.send("I am currently locked. Check back soon.")
         return
 
     if message.content.startswith('!ready'):
@@ -54,7 +67,9 @@ async def on_message(message):
         await message.channel.send("Entered Debug Mode!")
 
     elif message.content.startswith('!postready1'):
-        await message.channel.send("This feature is still in development!")
+        # Define your click coordinates here
+        # click(x, y)
+        await message.channel.send("Clicked Post Ready 1!")
 
     elif message.content.startswith('!update'):
         current_directory = os.path.dirname(os.path.abspath(__file__))
@@ -75,6 +90,16 @@ async def on_message(message):
         pyautogui.screenshot(screenshot_path)
         await message.channel.send(file=discord.File(screenshot_path))
         os.remove(screenshot_path)
+    
+    elif message.content.startswith('!lock') and message.author.id == locked_user_id:
+        global locked
+        locked = True
+        await message.channel.send("Commands locked!")
+
+    elif message.content.startswith('!unlock') and message.author.id == locked_user_id:
+        global locked
+        locked = False
+        await message.channel.send("Commands unlocked!")
 
 @client.event
 async def on_ready():
