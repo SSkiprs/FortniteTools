@@ -59,7 +59,7 @@ async def on_message(message):
             await message.channel.send("I am currently locked! Check back soon...")
             pass
         else:
-            click(706, 324)
+            click(706, 320)
             click(1168, 368)
             click(1388, 335)
             await message.channel.send("Clicked Join!")
